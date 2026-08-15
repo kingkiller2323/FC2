@@ -70,6 +70,12 @@ export const P = {
   seededNoiseAmplitude: <Grounding>{ value: 0.04, status: "ASSUMED", source: "residual variation; deterministic via committed seed" },
 
   // --- NAMED DESIGN LEVER 1: reaction floor → PER-OBSERVER DISTRIBUTION (Ruling C) ---
+  // DISTRIBUTION FAMILY: log-normal — the FAMILY ITSELF IS ASSUMED (Ruling F):
+  // nothing sources the shape; it is a defensible default for a positive,
+  // right-skewed task time, chosen, not derived.
+  // Logged for later, not modeled (Ruling F): "phone already in hand, unlocked,
+  // roughly aimed" is a real readiness state that is neither already-recording
+  // nor 2-s-floor — it will matter at concerts/protests.
   // Log-normal, median 7 s, sigma 0.55, truncated at 2 s physiological minimum:
   // P(<3s)≈6% (phone-in-hand), P(<5s)≈27%, P(>20s)≈2.8% (bags/gloves/slow appraisal).
   // NOT adjusted against any fixture (Ruling A answer: independent).

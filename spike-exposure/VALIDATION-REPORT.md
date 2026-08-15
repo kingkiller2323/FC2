@@ -178,3 +178,31 @@ independently validated). TOP-FLAGGED: detectionDetailBlendFloor (see
 params.ts header — tier-flipping authority, pure interpolation; grounding
 requires staged-event completeness-vs-eccentricity data that does not exist in
 the literature as parameterized).
+
+---
+
+# POST-V2 RULINGS (F, G, H) AND THE OPTIMISM-BIAS FINDING
+
+**Ruling F:** σ = 0.55 accepted. The log-normal FAMILY is now tagged ASSUMED in
+params.ts (the shape was chosen, not derived). Logged-not-modeled: the primed
+state ("phone in hand, unlocked, roughly aimed") — a third readiness class
+between already-recording and the 2 s floor; matters at concerts/protests.
+
+**Ruling G:** cam3 divergence RESOLVED in DORI's favor — judgment was
+optimistic, and the likely reason is recorded: cam3 carried the timing clue, so
+judgment had a narrative motive to make it legible. The fixture's judgment
+record is annotated (original text preserved); fixture geometry was NOT
+adjusted to rescue "usable"; the frozen Craft baseline is untouched. S4
+survives (Detect-grade supports register-2-unmanned).
+
+**NAMED FINDING — SYSTEMATIC OPTIMISM BIAS.** The external standard has now
+corrected improvised evidence twice, in the same direction (Carrer: judgment 4
+videos, model fewer; cam3: judgment usable, DORI Detect): **improvised evidence
+is systematically more legible than real evidence.** Standing prediction for
+all future ledger-vs-canon runs across Eras 1–5: expect under-production
+BEFORE running; treat matching canon as the surprising result.
+
+**Ruling H, Track 1 (recorded):** published surviving video counts measure the
+COMPOUND propensity × survival × custody × publication — never the propensity
+gate alone. Any counting study is reported as bounding the product; it cannot
+ground 0.06 by itself.
