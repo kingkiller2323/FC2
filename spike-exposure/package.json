@@ -1,0 +1,17 @@
+{
+  "name": "earthb-spike-exposure",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Earth-B exposure resolution functions spike — perception completeness + recording corruption/survival. NOT the runtime; first runtime code.",
+  "scripts": {
+    "test": "vitest run",
+    "sweep": "tsx test/sweep-report.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "tsx": "^4.19.0",
+    "vitest": "^2.1.0",
+    "fast-check": "^3.22.0"
+  }
+}

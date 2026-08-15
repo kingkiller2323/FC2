@@ -1,0 +1,520 @@
+{
+  "$comment": "UNSCORED PLAUSIBILITY fixture (demoted per Amendment 1 — this evidence texture was authored backwards from a narrative requirement during the Era 3 canon pass and is NOT capture-physics ground truth). Night street, ~25s rescue-shaped event, crowd present, one security camera across the street. Reported descriptively only; divergence from canon texture is a note, possibly about canon. V2 CORRECTION (disclosed): the v1 fixture under-transcribed canon — Era 3 canon states 'dozens of witnesses'; v1 had 15. Corrected to 36 observers / 18 phone carriers (2013 smartphone-camera penetration ~50%). Phase structure added per Ruling B: the van crash precedes the anomalous lift; the reaction clock starts at the crash. Salience tier: dramatic-safe — CONTESTED CLASSIFICATION (Ruling K): defensible case for personal-threat exists (recently-displaced van, potentially unstable during the lift, near observers within a plausible shift envelope). Both classifications run and reported; see validation report. Tier assignment is a judgment input requiring stated reasoning, never an obvious scene property.",
+  "fixture": "carrer-geometry",
+  "role": "PLAUSIBILITY (UNSCORED)",
+  "seed": 20130921,
+  "event": {
+    "id": "cg-e-rescue",
+    "mode": "accidental",
+    "at": "2013-09-21T21:47:00",
+    "durationSeconds": 25,
+    "signature": {
+      "visibility": "fully-visible",
+      "visualMagnitude": 0.9,
+      "audibility": 0.8,
+      "emSideEffect": 0.0,
+      "physicalSideEffect": 0.9,
+      "radiusMeters": 0,
+      "subjectScaleMeters": 2.5
+    },
+    "attentionKeys": [
+      "event",
+      "van",
+      "crash",
+      "rescue",
+      "man",
+      "carrer"
+    ],
+    "phases": [
+      {
+        "name": "van crash & pin",
+        "startSecond": 0,
+        "durationSeconds": 5,
+        "salient": true
+      },
+      {
+        "name": "crowd converges / man pinned",
+        "startSecond": 5,
+        "durationSeconds": 12,
+        "salient": true
+      },
+      {
+        "name": "the lift (anomalous)",
+        "startSecond": 17,
+        "durationSeconds": 8,
+        "salient": true,
+        "anomalous": true
+      }
+    ],
+    "salience": "dramatic-safe"
+  },
+  "lighting": "night-streetlit",
+  "observers": [
+    {
+      "id": "w01",
+      "distanceMeters": 4,
+      "offAxisDegrees": 10,
+      "occlusion": 0.0,
+      "attention": "attended",
+      "attentionTarget": "event",
+      "stress": 0.8,
+      "sensory": "normal"
+    },
+    {
+      "id": "w02",
+      "distanceMeters": 6,
+      "offAxisDegrees": 20,
+      "occlusion": 0.0,
+      "attention": "attended",
+      "attentionTarget": "event",
+      "stress": 0.8,
+      "sensory": "normal"
+    },
+    {
+      "id": "w03",
+      "distanceMeters": 8,
+      "offAxisDegrees": 5,
+      "occlusion": 0.1,
+      "attention": "attended",
+      "attentionTarget": "event",
+      "stress": 0.7,
+      "sensory": "normal"
+    },
+    {
+      "id": "w04",
+      "distanceMeters": 12,
+      "offAxisDegrees": 40,
+      "occlusion": 0.2,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.4,
+      "sensory": "normal"
+    },
+    {
+      "id": "w05",
+      "distanceMeters": 15,
+      "offAxisDegrees": 60,
+      "occlusion": 0.0,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.3,
+      "sensory": "normal"
+    },
+    {
+      "id": "w06",
+      "distanceMeters": 18,
+      "offAxisDegrees": 90,
+      "occlusion": 0.3,
+      "attention": "attended",
+      "attentionTarget": "companion",
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w07",
+      "distanceMeters": 22,
+      "offAxisDegrees": 25,
+      "occlusion": 0.0,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w08",
+      "distanceMeters": 25,
+      "offAxisDegrees": 120,
+      "occlusion": 0.5,
+      "attention": "attended",
+      "attentionTarget": "phone",
+      "stress": 0.1,
+      "sensory": "normal"
+    },
+    {
+      "id": "w09",
+      "distanceMeters": 30,
+      "offAxisDegrees": 15,
+      "occlusion": 0.2,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w10",
+      "distanceMeters": 35,
+      "offAxisDegrees": 70,
+      "occlusion": 0.6,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.1,
+      "sensory": "normal"
+    },
+    {
+      "id": "w11",
+      "distanceMeters": 40,
+      "offAxisDegrees": 30,
+      "occlusion": 0.0,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.1,
+      "sensory": "normal"
+    },
+    {
+      "id": "w12",
+      "distanceMeters": 45,
+      "offAxisDegrees": 100,
+      "occlusion": 0.7,
+      "attention": "attended",
+      "attentionTarget": "companion",
+      "stress": 0.1,
+      "sensory": "normal"
+    },
+    {
+      "id": "w13",
+      "distanceMeters": 50,
+      "offAxisDegrees": 45,
+      "occlusion": 0.3,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.1,
+      "sensory": "normal"
+    },
+    {
+      "id": "w14",
+      "distanceMeters": 55,
+      "offAxisDegrees": 20,
+      "occlusion": 0.4,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.1,
+      "sensory": "normal"
+    },
+    {
+      "id": "w15",
+      "distanceMeters": 60,
+      "offAxisDegrees": 80,
+      "occlusion": 0.8,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.1,
+      "sensory": "normal"
+    },
+    {
+      "id": "w16",
+      "distanceMeters": 8,
+      "offAxisDegrees": 8,
+      "occlusion": 0.0,
+      "attention": "attended",
+      "attentionTarget": "companion",
+      "stress": 0.5,
+      "sensory": "normal"
+    },
+    {
+      "id": "w17",
+      "distanceMeters": 15,
+      "offAxisDegrees": 31,
+      "occlusion": 0.3,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w18",
+      "distanceMeters": 22,
+      "offAxisDegrees": 54,
+      "occlusion": 0.6,
+      "attention": "attended",
+      "attentionTarget": "event",
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w19",
+      "distanceMeters": 29,
+      "offAxisDegrees": 77,
+      "occlusion": 0.1,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w20",
+      "distanceMeters": 36,
+      "offAxisDegrees": 100,
+      "occlusion": 0.4,
+      "attention": "attended",
+      "attentionTarget": "companion",
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w21",
+      "distanceMeters": 43,
+      "offAxisDegrees": 123,
+      "occlusion": 0.7,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w22",
+      "distanceMeters": 50,
+      "offAxisDegrees": 146,
+      "occlusion": 0.2,
+      "attention": "attended",
+      "attentionTarget": "event",
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w23",
+      "distanceMeters": 57,
+      "offAxisDegrees": 169,
+      "occlusion": 0.5,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w24",
+      "distanceMeters": 9,
+      "offAxisDegrees": 12,
+      "occlusion": 0.0,
+      "attention": "attended",
+      "attentionTarget": "companion",
+      "stress": 0.5,
+      "sensory": "normal"
+    },
+    {
+      "id": "w25",
+      "distanceMeters": 16,
+      "offAxisDegrees": 35,
+      "occlusion": 0.3,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w26",
+      "distanceMeters": 23,
+      "offAxisDegrees": 58,
+      "occlusion": 0.6,
+      "attention": "attended",
+      "attentionTarget": "event",
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w27",
+      "distanceMeters": 30,
+      "offAxisDegrees": 81,
+      "occlusion": 0.1,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w28",
+      "distanceMeters": 37,
+      "offAxisDegrees": 104,
+      "occlusion": 0.4,
+      "attention": "attended",
+      "attentionTarget": "companion",
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w29",
+      "distanceMeters": 44,
+      "offAxisDegrees": 127,
+      "occlusion": 0.7,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w30",
+      "distanceMeters": 51,
+      "offAxisDegrees": 150,
+      "occlusion": 0.2,
+      "attention": "attended",
+      "attentionTarget": "event",
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w31",
+      "distanceMeters": 58,
+      "offAxisDegrees": 173,
+      "occlusion": 0.5,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w32",
+      "distanceMeters": 10,
+      "offAxisDegrees": 16,
+      "occlusion": 0.0,
+      "attention": "attended",
+      "attentionTarget": "companion",
+      "stress": 0.5,
+      "sensory": "normal"
+    },
+    {
+      "id": "w33",
+      "distanceMeters": 17,
+      "offAxisDegrees": 39,
+      "occlusion": 0.3,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w34",
+      "distanceMeters": 24,
+      "offAxisDegrees": 62,
+      "occlusion": 0.6,
+      "attention": "attended",
+      "attentionTarget": "event",
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w35",
+      "distanceMeters": 31,
+      "offAxisDegrees": 85,
+      "occlusion": 0.1,
+      "attention": "ambient",
+      "attentionTarget": null,
+      "stress": 0.2,
+      "sensory": "normal"
+    },
+    {
+      "id": "w36",
+      "distanceMeters": 38,
+      "offAxisDegrees": 108,
+      "occlusion": 0.4,
+      "attention": "attended",
+      "attentionTarget": "companion",
+      "stress": 0.2,
+      "sensory": "normal"
+    }
+  ],
+  "devices": [
+    {
+      "id": "shop-cam",
+      "kind": "wide",
+      "qualityTier": "wide-far",
+      "distanceMeters": 28,
+      "inFieldOfView": true,
+      "emExposed": false,
+      "operating": true,
+      "retentionDays": 30,
+      "note": "across-street security camera; 2013-era low frame rate"
+    }
+  ],
+  "observerCarriedDevices": [
+    {
+      "custodian": "w01",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w02",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w04",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w05",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w07",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w09",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w11",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w13",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w03",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w06",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w08",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w10",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w12",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w14",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w15",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w16",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w17",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    },
+    {
+      "custodian": "w18",
+      "kind": "phone-2013",
+      "alreadyRecording": false
+    }
+  ],
+  "canonTexture": "Era 3 canon (authored, not physics): ~4 independent phone videos beginning mid-event; security camera's relevant instant falls between frames; no identifying capture of the helper."
+}
