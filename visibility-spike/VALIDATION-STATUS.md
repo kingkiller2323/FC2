@@ -31,3 +31,65 @@ Remaining before spike close: property/invariant suite (NO-LEAK, NO-TELEPORT,
 NULL-RECEPTION, conservation, determinism, era monotonicity as properties);
 P6 optimism-bias regression vs gap-run-01 timings; report with all band
 widths; user rulings on the three honest misses.
+
+---
+
+# RULINGS M–O CLOSE-OUT + CONDITIONAL RE-MEASUREMENTS
+
+**Ruling M — P1 threshold provenance, stated plainly:** the 0.02 city bound was
+a round number — "it seemed like a small number." Not derived from anything.
+The 0.0213 result is therefore a near-miss against an unanchored threshold:
+weak evidence in both directions, recorded as such, threshold not adjusted.
+
+**Ruling N — P4 conditional (dread among AVOIDERS, time-resolved):**
+day 7: 15.3% · **day 14: 18.4%** · day 30: 7.0% · day 60: 2.1%; median
+dread-window (first partial → first full) = 8 days (n=704). The mass sits in
+the predicted 15–30% band at the 1–2-week horizon and collapses as fulls
+arrive. **Verdict: the mechanism holds partials open under avoidance; the
+original prediction stated a conditional, time-windowed quantity as a global
+60-day one — the user's specification error, recorded as theirs per
+instruction.** (Original global figure 0.021 retained above, labeled global.)
+
+**Ruling N — P5 stratified by surface density:** sparse 0.559 · medium 0.189 ·
+high 0.189 partial-first. High among sparse subjects, low among dense —
+**mechanism sensitive to density; the global >50% prediction was the wrong
+statistic — the user's specification error, theirs per instruction.** One
+model note: medium ≈ high (sensitivity saturates once the named workplace
+surface is present; the tell-multiplier dominates).
+
+**P6 — optimism-bias regression: CONFIRMED, third instance.** Marcus-analog
+median first-full = 6 days vs the judgment run's same-day group reception;
+1.6% of seeds reproduce same-day; 43.8% exceed 10 days. The mechanism
+under-diffuses relative to judgment exactly as the standing prediction
+requires — judgment-run information flow was optimistically fast and neat.
+
+**Ruling O:** salienceCarriage relabeled FITTED-MAGNITUDE / CITED-DIRECTION.
+
+**STANDING NOTE — STRUCTURAL OVER-PRODUCTION (watch for the third instance):**
+two spikes, two base mechanisms that over-produced, two damping constants
+fitted after a first run: filmingPropensity (exposure) and salienceCarriage
+(visibility) — both cited-direction, fitted-magnitude. Twice is not yet a
+pattern. If a THIRD damping constant becomes necessary, STOP and audit the
+base mechanisms for systematic generosity before adding it.
+
+**V1 property suite: 6/6 pass** (NO-TELEPORT provenance, NULL-RECEPTION,
+determinism, conservation+hardening, identity-drop default, era monotonicity).
+
+**P2 noted per ruling: the second canon property derived rather than
+asserted** — Powered History's anonymity texture (anonymous subjects never
+learning, identity dropping at scope boundaries) now falls out of mechanism.
+
+# SPIKE CLOSED
+
+Built: narrativeStep + receptionOpportunity (pure, seeded); era-varying
+constants (one interpolated anchor table — scope guard held); per-(narrative,
+scope) subject-link tiers with committed re-identification; avoidance as
+upstream committed action; partial reception from surface bandwidth.
+Validated: strongly — invariants 6/6, P2 (anonymity texture, 100%/69%), P3
+(era divergence, platform 0%→58%); moderately — P4/P5 conditional (mechanism
+works; global predictions were mis-specified); honestly open — P1 near-miss vs
+unanchored threshold. Optimism bias confirmed a third time (P6). Open,
+documented, unworked: target-reception rate, minor-story awareness floors,
+medium/high density saturation, day-granularity floor. The runtime inherits:
+both functions, the parameter table with full taxonomy, the era anchor table,
+and the PAIR rule — exposure ledger + visibility model promote together.
