@@ -52,7 +52,8 @@ function bystanderPaths(scene: ObjectiveScene | BelievedScene, perceptions: Perc
     // FIRST SALIENT PHASE, not from the anomalous moment (Ruling B).
     const p = perceptions.find(x => x.observerId === c.custodian);
     if (!p || (p.onsetTier === "none" && !p.orientedDuringEvent)) continue;
-    const decides = mulberry32((scene.seed ^ hashId(c.custodian)) >>> 0)() < P.filmingPropensity.value;
+    const tier = scene.event.salience ?? "mundane";
+    const decides = mulberry32((scene.seed ^ hashId(c.custodian)) >>> 0)() < P.filmingPropensityByTier[tier].value;
     if (!decides) continue;
     const start = firstSalientStart + observerReactionFloor(c.custodian, scene.seed);
     const captured = Math.max(0, dur - start);

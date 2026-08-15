@@ -33,6 +33,7 @@ export interface ExposureEvent {
   signature: EventSignature;
   phases?: EventPhase[];       // schema ext. 4 (absent ⇒ single-phase event)
   attentionKeys?: string[];    // schema ext. 3: attention targets that count as ON the event's spatial extent
+  salience?: "mundane" | "dramatic-safe" | "personal-threat"; // Track 2 tier (default mundane)
 }
 
 export type Lighting = "daylight" | "indoor-fluorescent-good" | "night-streetlit" | "dark";

@@ -206,3 +206,51 @@ BEFORE running; treat matching canon as the surprising result.
 COMPOUND propensity × survival × custody × publication — never the propensity
 gate alone. Any counting study is reported as bounding the product; it cannot
 ground 0.06 by itself.
+
+---
+
+# RULING H — TRACK 2 OUTCOME (blind research, pre-registered comparison)
+
+**The blind register** (Martin/Knuth/Przyrembel 2025 German EMS field data; van
+der Wal 2021 evacuation-video analysis; Lindegaard 2022; Philpot 2019; full
+citations in the register): mundane per-carrier filming propensity **0.02–0.10**;
+dramatic-but-spectator-safe **0.15–0.40** (~3–6×); personal-threat suppression
+**×0.4–0.6** (filming OR 0.41 under perceivable threat) — an **inverted-U**.
+Absolute anchors LOW-MEDIUM (incident-level → per-witness conversion, stated
+plainly); shape MEDIUM-HIGH.
+
+**Unsealed comparison (full text in predictions/SALIENCE-PREREGISTRATION.md):**
+1. **Canon vs literature: HIT.** Carrer's canon texture implies 0.22
+   per-carrier; the blind band for exactly that incident class is 0.15–0.40.
+   Canon sits mid-band. Per the optimism-bias finding this was the SURPRISING
+   outcome — and, notably, it is the bias-defying exception: canon's Carrer
+   *count* was realistic even though its camera legibility (cam3-style) was not.
+2. **My pre-registered band (0.3–0.5): NEAR-MISS, derivation error owned** —
+   I overstated canon's requirement ~40% (wrote 0.3–0.5 where 4/18 = 0.22).
+   Bands overlap on [0.30, 0.40]; prediction center high.
+3. **The FITTED 0.06 landed mid-bracket of the blind mundane band (0.02–0.10).**
+   Chosen fitted; corroborated by a researcher who never saw it.
+
+**Track 2 implemented:** filmingPropensity is now a three-tier salience
+structure — mundane 0.06 (origin FITTED, since corroborated; relabel to
+CITED-bracket PROPOSED, pending ratification) · dramatic-safe 0.275
+(CITED-bracket midpoint) · personal-threat 0.14 (CITED suppression factor).
+The event schema carries `salience`; the inverted-U is in the model.
+
+**The convergence result:** Carrer re-run with the independently derived tier:
+**5 reactive recordings vs canon's ~4, the first beginning ~6.8 s in
+("videos beginning mid-event"), covering the anomalous phase** — produced by
+phase structure (Ruling B) + the floor distribution (Ruling C) + the blind
+salience band (Track 2), none of which was tuned to canon. Carrer remains
+UNSCORED by standing rule; this is reported as out-of-sample convergence, not
+as a scored pass.
+
+**Promotion status:** Track 2 succeeded within the register's stated
+confidence. The mundane tier's relabel (FITTED → CITED-bracket, on grounds of
+blind corroboration) awaits user ratification; if declined, Track 3 stands
+ready (third named design lever). Either path unblocks ledger promotion per
+Ruling H. The units caveat (incident-level vs per-witness) is the parameter
+family's honest residual weakness and is flagged in every source string.
+
+**Suite: 23/24** — the one failure remains the pre-registered ET1 rounding
+error, kept failing per ruling.

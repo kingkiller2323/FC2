@@ -83,8 +83,16 @@ export const P = {
   reactionFloorSigma: <Grounding>{ value: 0.55, status: "ASSUMED", source: "no distributional literature; percentile shape chosen for physical plausibility; swept 0.4–0.7 in report" },
   reactionFloorMinSeconds: <Grounding>{ value: 2.0, status: "ASSUMED", source: "physiological minimum: orient + raise, phone already in hand" },
 
-  // --- FITTED (Ruling A): cannot count toward validation ---
-  filmingPropensity: <Grounding>{ value: 0.06, status: "FITTED", source: "FITTED: mechanism introduced after 2nd pre-registration when inspection showed ~50 recordings/100 bystanders without it; value chosen from the V2 register band (1–10%, itself ASSUMED; Pew 7%-ever floor) so expected output lands inside the ET2 band — chosen against the target. Needs independent validation before ledger promotion. Constant; salience-scaling REQUIRED (Carrer arithmetic) and deferred" },
+  // --- Filming propensity: Track 2 salience structure (Ruling H) ---
+  // Three research-bracketed tiers (blind register: Martin 2025; van der Wal
+  // 2021; Lindegaard 2022 — inverted-U: rises with spectacle, suppressed under
+  // personal threat). Units caveat carried honestly: absolute per-witness
+  // anchors are LOW-MEDIUM (incident-level → per-witness conversion).
+  filmingPropensityByTier: {
+    "mundane": <Grounding>{ value: 0.06, status: "FITTED", source: "ORIGIN: FITTED (introduced post-2nd-pre-registration; see history). SINCE CORROBORATED by blind research: falls mid-bracket of the independently derived mundane band 0.02–0.10 (Martin et al. 2025 derivation). Relabel to CITED-bracket PROPOSED, pending user ratification" },
+    "dramatic-safe": <Grounding>{ value: 0.275, status: "CITED", source: "blind register: dramatic-but-spectator-safe band 0.15–0.40 per phone-carrying witness (~3–6× mundane), midpoint taken; absolute anchor LOW-MEDIUM (unit-conversion caveat), shape MEDIUM-HIGH" },
+    "personal-threat": <Grounding>{ value: 0.14, status: "CITED", source: "dramatic-safe × threat-suppression 0.4–0.6 (van der Wal 2021: filming OR 0.41 under perceivable threat; Lindegaard 2022: danger recruits helping) — inverted-U right side" },
+  },
 
   // --- NAMED DESIGN LEVER 2: already-recording rate (per bystander, by context) ---
   // Set from the V2 register bands BEFORE any fixture or sweep ran (not fitted).

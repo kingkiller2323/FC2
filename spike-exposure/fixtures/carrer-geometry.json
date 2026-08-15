@@ -1,5 +1,5 @@
 {
-  "$comment": "UNSCORED PLAUSIBILITY fixture (demoted per Amendment 1 — this evidence texture was authored backwards from a narrative requirement during the Era 3 canon pass and is NOT capture-physics ground truth). Night street, ~25s rescue-shaped event, crowd present, one security camera across the street. Reported descriptively only; divergence from canon texture is a note, possibly about canon. V2 CORRECTION (disclosed): the v1 fixture under-transcribed canon — Era 3 canon states 'dozens of witnesses'; v1 had 15. Corrected to 36 observers / 18 phone carriers (2013 smartphone-camera penetration ~50%). Phase structure added per Ruling B: the van crash precedes the anomalous lift; the reaction clock starts at the crash.",
+  "$comment": "UNSCORED PLAUSIBILITY fixture (demoted per Amendment 1 — this evidence texture was authored backwards from a narrative requirement during the Era 3 canon pass and is NOT capture-physics ground truth). Night street, ~25s rescue-shaped event, crowd present, one security camera across the street. Reported descriptively only; divergence from canon texture is a note, possibly about canon. V2 CORRECTION (disclosed): the v1 fixture under-transcribed canon — Era 3 canon states 'dozens of witnesses'; v1 had 15. Corrected to 36 observers / 18 phone carriers (2013 smartphone-camera penetration ~50%). Phase structure added per Ruling B: the van crash precedes the anomalous lift; the reaction clock starts at the crash. Salience tier: dramatic-safe (man pinned under van; bystanders themselves unthreatened — the blind register's exact incident class).",
   "fixture": "carrer-geometry",
   "role": "PLAUSIBILITY (UNSCORED)",
   "seed": 20130921,
@@ -45,7 +45,8 @@
         "salient": true,
         "anomalous": true
       }
-    ]
+    ],
+    "salience": "dramatic-safe"
   },
   "lighting": "night-streetlit",
   "observers": [
