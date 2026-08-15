@@ -254,3 +254,58 @@ family's honest residual weakness and is flagged in every source string.
 
 **Suite: 23/24** — the one failure remains the pre-registered ET1 rounding
 error, kept failing per ruling.
+
+---
+
+# RULINGS I–L APPLIED
+
+**Ruling I — relabel granted as FITTED-CORROBORATED, not CITED.** The status
+now exists in the taxonomy; the source string leads with "FITTED FIRST …
+CORROBORATED SECOND" in that order, states that no source says 0.06, and that
+corroboration is not derivation. **Ledger promotion: UNBLOCKED** (the parameter
+no longer claims to be modeled). Track 3 not needed.
+
+**Ruling J — band widths stated; language downgraded.** The dramatic-safe band
+0.15–0.40 spans a factor of **2.7**; the mundane band 0.02–0.10 spans a factor
+of **5**. Amended results language: canon's 0.22 is **consistent with the blind
+band, within a wide band** (not "clean hit"); the 0.06 baseline is
+**consistent with the blind mundane bracket, within a very wide band**. A broad
+range of plausible values would also have landed inside; these results are
+consistency checks, not tight tests — and they are the results that unblocked
+promotion, which is why the widths are stated here. (The original "HIT"
+phrasing remains visible in the pre-registration file's unsealed section and in
+repo history, per the keep-the-record instruction.)
+
+**Ruling K — tier assignment is an unregistered degree of freedom; sensitivity
+run executed.** The salience *bands* were blind; the *classification* of Carrer
+was not — it was assigned knowing the target count. Both classifications run:
+
+| Classification | Seeded outcome | Expectation (18 × p) |
+|---|---|---|
+| dramatic-safe (0.275) | **5 recordings** | 5.0 |
+| personal-threat (0.14) | **0 recordings** | 2.5 (seeded zero, P≈7%) |
+| canon | ~4 | — |
+
+Reasoning, stated separately from the result: *for* dramatic-safe — the van is
+at rest post-impact, the anomalous phase is a rescue, most fixture observers
+stand 12–60 m away outside any plausible vehicle path, and van der Wal's
+suppression was measured under perceivable ongoing threat to the observer
+(fires, alarms). *For* personal-threat — the vehicle was violently displaced
+seconds earlier, could shift during the lift, near observers (4–8 m) are inside
+a plausible envelope, and the fixture's own near-observer stress values
+(0.7–0.8) encode perceived danger. **Verdict: both are defensible; the scene is
+genuinely mixed** (near observers plausibly suppressed, far ones not), and the
+honest ambiguity is itself a finding: with classification contested, the
+convergence claim weakens from "5 vs ~4" to "0–5 spanning canon, depending on
+a judgment call." Proper resolution is per-observer threat perception (logged
+in the schema docs as the required refinement). Generalized: tier assignment is
+now documented in the input schema as a judgment input requiring stated
+per-incident reasoning.
+
+**Ruling L** — written up standalone on Craft: *Finding — The Spectacle–Safety
+Filming Peak.*
+
+**Also (units caveat elevated):** the incident→per-witness conversion is now
+TOP-FLAGGED WEAKNESS 2 in params.ts, alongside blendFloor, with the resolution
+requirement stated (per-witness coding of filmers-vs-present at known
+incidents — a study that does not exist).

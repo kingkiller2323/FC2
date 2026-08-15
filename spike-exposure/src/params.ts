@@ -14,8 +14,18 @@
 // report exactly this but were not run at controlled eccentricities). Until
 // such data exists or a purpose-built study is run, every mid-periphery tier
 // boundary in this model rests on interpolation.
+//
+// ⚠ TOP-FLAGGED WEAKNESS 2 (Ruling L-adjacent, elevated per ruling): the
+// INCIDENT→PER-WITNESS UNITS CONVERSION. The filming literature measures
+// incidents ("was anyone filming at this scene?"), never witnesses ("what
+// fraction of carriers filmed?"). Every band in the filmingPropensityByTier
+// family inherits this conversion error — plausibly a larger error source than
+// any single value in the model. Resolving it requires per-witness coding that
+// does not exist: a field study (or systematic re-analysis of crowd footage)
+// counting filmers against total present at known incidents. Until then, every
+// propensity band is a bracketed inference, not a measurement.
 
-export type Grounding = { value: number; status: "CITED" | "ASSUMED" | "FITTED"; source: string };
+export type Grounding = { value: number; status: "CITED" | "ASSUMED" | "FITTED" | "FITTED-CORROBORATED"; source: string };
 
 export const P = {
   // --- perception: geometry ---
@@ -89,7 +99,7 @@ export const P = {
   // personal threat). Units caveat carried honestly: absolute per-witness
   // anchors are LOW-MEDIUM (incident-level → per-witness conversion).
   filmingPropensityByTier: {
-    "mundane": <Grounding>{ value: 0.06, status: "FITTED", source: "ORIGIN: FITTED (introduced post-2nd-pre-registration; see history). SINCE CORROBORATED by blind research: falls mid-bracket of the independently derived mundane band 0.02–0.10 (Martin et al. 2025 derivation). Relabel to CITED-bracket PROPOSED, pending user ratification" },
+    "mundane": <Grounding>{ value: 0.06, status: "FITTED-CORROBORATED", source: "FITTED FIRST: introduced post-2nd-pre-registration because output looked wrong (~50 rec/100 bystanders); value chosen against the ET2 band. CORROBORATED SECOND: blind research independently derived a mundane band of 0.02–0.10 (Martin et al. 2025 derivation; band spans ×5) and 0.06 falls inside it. Corroboration is not derivation — no source says 0.06 (Ruling I). Ledger promotion unblocked under this status" },
     "dramatic-safe": <Grounding>{ value: 0.275, status: "CITED", source: "blind register: dramatic-but-spectator-safe band 0.15–0.40 per phone-carrying witness (~3–6× mundane), midpoint taken; absolute anchor LOW-MEDIUM (unit-conversion caveat), shape MEDIUM-HIGH" },
     "personal-threat": <Grounding>{ value: 0.14, status: "CITED", source: "dramatic-safe × threat-suppression 0.4–0.6 (van der Wal 2021: filming OR 0.41 under perceivable threat; Lindegaard 2022: danger recruits helping) — inverted-U right side" },
   },

@@ -88,6 +88,17 @@ describe("V4 REGRESSION ONLY — gap-run-01 incident vs judgment outcomes", () =
 
 describe("PLAUSIBILITY (UNSCORED) — Carrer geometry", () => {
   const out = resolveExposure(loadScene("carrer-geometry.json"));
+  it("Ruling K sensitivity: BOTH salience classifications reported", () => {
+    const scene = loadScene("carrer-geometry.json");
+    const asSafe = resolveExposure({ ...scene, event: { ...scene.event, salience: "dramatic-safe" } });
+    const asThreat = resolveExposure({ ...scene, event: { ...scene.event, salience: "personal-threat" } });
+    console.log("RULING K TIER SENSITIVITY:", JSON.stringify({
+      "dramatic-safe": asSafe.bystanderRecordings.filter(b => b.path === "reactive").length,
+      "personal-threat": asThreat.bystanderRecordings.filter(b => b.path === "reactive").length,
+      canon: "~4",
+    }));
+    expect(asSafe.eventId).toBe("cg-e-rescue");
+  });
   it("descriptive report only", () => {
     const reactive = out.bystanderRecordings.filter(b => b.path === "reactive");
     const summary = {

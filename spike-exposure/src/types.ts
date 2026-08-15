@@ -33,7 +33,13 @@ export interface ExposureEvent {
   signature: EventSignature;
   phases?: EventPhase[];       // schema ext. 4 (absent ⇒ single-phase event)
   attentionKeys?: string[];    // schema ext. 3: attention targets that count as ON the event's spatial extent
-  salience?: "mundane" | "dramatic-safe" | "personal-threat"; // Track 2 tier (default mundane)
+  // Track 2 tier (default mundane). RULING K: tier assignment is an
+  // UNREGISTERED DEGREE OF FREEDOM — a modeling input requiring stated
+  // per-incident reasoning, NOT an obvious property of the scene. The same
+  // scene is often defensible under two tiers (is a settled-but-pinning van an
+  // ongoing threat to spectators?); when both are defensible, run and report
+  // both. Proper long-term resolution is per-observer threat perception.
+  salience?: "mundane" | "dramatic-safe" | "personal-threat";
 }
 
 export type Lighting = "daylight" | "indoor-fluorescent-good" | "night-streetlit" | "dark";
