@@ -309,3 +309,48 @@ Filming Peak.*
 TOP-FLAGGED WEAKNESS 2 in params.ts, alongside blendFloor, with the resolution
 requirement stated (per-witness coding of filmers-vs-present at known
 incidents — a study that does not exist).
+
+---
+
+# DIRECTIVE 1 — MULTI-SEED DISTRIBUTIONS (2,000 seeds per fixture)
+
+Single-seed values retained below, labeled as single draws. Distributions from
+2,000 deterministic seeds:
+
+| Fixture | Single draw | Distribution (2,000 seeds) |
+|---|---|---|
+| Carrer, dramatic-safe | 5 | mean 4.88, sd 1.90; P(X=4)=0.205; P(3–5)=0.550; P(0)=0.004 |
+| Carrer, personal-threat | 0 | mean 2.50, sd 1.48; P(X=4)=0.136; P(3–5)=0.457; **P(0)=0.075** |
+| gap-run-01 bystanders | 0 | 0 at every seed (deterministic: 2 s ≪ 2 s floor minimum + start) |
+| gap-run-01 cam3 tier | trace | trace 87.8% / degraded 12.2% (noise straddles the Detect edge) |
+| Mundane lot-dome | usable | usable at 100% of seeds |
+| Mundane reactive count | 0 | 0 at every seed |
+| ET2 total captures | 8 | mean 6.5, sd 2.49; **P(in pre-registered 1–10 band) = 0.930**; P(already ≤2)=0.988 |
+
+**Restated conclusions:**
+
+1. **Ruling K's conclusion CORRECTED as directed.** The user's binomial
+   estimates (P(X=4) ≈ 0.19 / 0.16) are confirmed at 0.205 / 0.136. The
+   classification shifts the typical texture by about half (means 4.88 vs
+   2.50) and **barely affects whether canon's count is reproducible** —
+   canon's ~4 is unremarkable under either classification. The prior
+   "0–5 spanning canon depending on a judgment call" was seed-manufactured
+   drama and is withdrawn.
+2. **The predicted unlucky-draw-reported-as-finding, identified:** the
+   personal-threat "0 recordings" was a 7.5%-probability draw presented as an
+   outcome. Its distributional truth: typically 2–3.
+3. **Carrer convergence, restated distributionally:** mean 4.88 against canon's
+   ~4, with 55% mass on 3–5. The single-seed 5 was a typical draw, not a lucky
+   one — the convergence claim survives at distribution level (still unscored,
+   still within Ruling J's wide-band language).
+4. **cam3 restated:** trace at 88% of seeds, degraded at 12% — the noise
+   straddles the Detect threshold. The Ruling G resolution is unaffected
+   (every seed lands Detect-grade-or-below; none approaches "usable"), but the
+   single-seed "trace" was one side of a quantified edge.
+5. **Strengthened:** mundane control (100% stable at every seed) and
+   gap-run-01's zero-bystander outcome (deterministic).
+6. **Honestly weakened:** ET2's band membership is 93.0%, not certain — 1 seed
+   in 14 exits the band, almost always above it. The single-seed pass was
+   typical but the pre-registered ET2 "PASS" is restated as P(pass) = 0.93.
+
+Every fixture comparison in this project is now a statistic, not an anecdote.
