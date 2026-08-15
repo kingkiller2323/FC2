@@ -1,101 +1,93 @@
-// Every tunable carries its grounding status. ASSUMED values are surfaced
-// prominently in the validation report — they are where the model is weakest.
-// CITED values reference the V2 research register (report §V2).
+// Every tunable carries its grounding status (Ruling A taxonomy):
+//   CITED   — value taken from external research; source given.
+//   ASSUMED — no source exists; value chosen to fill a gap BEFORE seeing any
+//             fixture output. Uncertain but uncontaminated.
+//   FITTED  — value or mechanism introduced/adjusted because output looked
+//             wrong against an expectation. Contaminated; cannot count toward
+//             validation; needs independent validation before promotion.
+//
+// ⚠ TOP-FLAGGED WEAKNESS: detectionDetailBlendFloor (0.35, ASSUMED) is the most
+// dangerous number in the model — pure interpolation with tier-flipping
+// authority (±0.15 moves mid-angle perception a full tier). Grounding it needs
+// staged-event eyewitness data at known geometry: completeness-of-account vs
+// viewing angle for a dynamic incident (Loftus-style staged-event paradigms
+// report exactly this but were not run at controlled eccentricities). Until
+// such data exists or a purpose-built study is run, every mid-periphery tier
+// boundary in this model rests on interpolation.
 
-export type Grounding = { value: number; status: "CITED" | "ASSUMED"; source: string };
+export type Grounding = { value: number; status: "CITED" | "ASSUMED" | "FITTED"; source: string };
 
 export const P = {
   // --- perception: geometry ---
-  // DETAIL acuity falloff ~ 1/(1 + angle/E2). Letter/object-detail E2 ≈ 2.3°
-  // (Anstis 1974 via Strasburger, Rentschler & Jüttner 2011, J Vision 11(5):13, Table 4).
   eccentricityE2: <Grounding>{ value: 2.3, status: "CITED", source: "Strasburger et al. 2011 (letter acuity E2≈2.3°; grating 2.5–3.0°)" },
-  // EVENT DETECTION persists far into the periphery: salient-event categorization
-  // ~93% near-central → ~60.6% at 70° (Thorpe et al. 2001, via Strasburger §6.2).
-  // Linear decline to the field limit; detection ≠ detail.
   detectionAt70Degrees: <Grounding>{ value: 0.65, status: "CITED", source: "Thorpe et al. 2001: 93%→60.6% correct at 70° (chance 50%) ⇒ ~0.65 relative" },
-  // Blend: completeness = detection × (blendFloor + (1−blendFloor) × detail).
-  detectionDetailBlendFloor: <Grounding>{ value: 0.35, status: "ASSUMED", source: "interpolation between detection and detail anchors; no direct literature" },
-  // Distance at which visual detail halves (by lighting).
+  detectionDetailBlendFloor: <Grounding>{ value: 0.35, status: "ASSUMED", source: "TOP-FLAGGED: pure interpolation, tier-flipping authority; see file header" },
   distanceHalfMeters: {
-    "daylight": <Grounding>{ value: 40, status: "ASSUMED", source: "no direct per-distance event-perception literature; known limitation: person-scale calibration, no subject-scale term (see report)" },
+    "daylight": <Grounding>{ value: 40, status: "ASSUMED", source: "no per-distance event-perception literature; person-scale (1.7 m) reference — subject scale rescales effective distance (schema ext. 1)" },
     "indoor-fluorescent-good": <Grounding>{ value: 30, status: "ASSUMED", source: "no direct literature; below daylight" },
-    "night-streetlit": <Grounding>{ value: 18, status: "ASSUMED", source: "no direct literature; scaled from daylight by scotopic/mesopic acuity loss" },
+    "night-streetlit": <Grounding>{ value: 18, status: "ASSUMED", source: "no direct literature; scotopic/mesopic loss" },
     "dark": <Grounding>{ value: 6, status: "ASSUMED", source: "no direct literature" },
   },
-  // Behind-the-head boundary: no direct vision past this off-axis angle.
-  visualFieldLimitDegrees: <Grounding>{ value: 100, status: "CITED", source: "temporal monocular field extends ~90–100° (Strasburger review; standard perimetry)" },
+  visualFieldLimitDegrees: <Grounding>{ value: 100, status: "CITED", source: "temporal monocular field ~90–100° (standard perimetry; Strasburger review)" },
+  personReferenceScaleMeters: <Grounding>{ value: 1.7, status: "CITED", source: "CAST 28/09 subject height reference 1.64–1.76 m" },
 
   // --- perception: attention ---
-  ambientAttentionFactor: <Grounding>{ value: 0.6, status: "CITED", source: "Hyman et al. 2010: >50% of undistracted walkers notice the unexpected event (MEDIUM: 25%-vs->50% split verified; finer split unverified)" },
-  attendedElsewhereFactor: <Grounding>{ value: 0.25, status: "CITED", source: "Simons & Chabris 1999 (46% overall miss; ~50% opaque-gorilla); Hyman 2010 (25% of phone-talkers notice); Drew 2013 (83% expert miss). Range 0.25–0.85 by load; 0.25 = demanding-task anchor" },
-  // Orienting: audible salience needed to pull attention (compared against audibility * distance falloff).
-  orientingThreshold: <Grounding>{ value: 0.15, status: "ASSUMED", source: "no direct literature for auditory-orienting threshold in this parameterization" },
-  audibilityHalfDistanceMeters: <Grounding>{ value: 50, status: "ASSUMED", source: "no direct literature; loud-impulse audibility persists far beyond visual detail" },
+  ambientAttentionFactor: <Grounding>{ value: 0.6, status: "CITED", source: "Hyman et al. 2010: >50% undistracted walkers notice (finer split unverified)" },
+  attendedElsewhereFactor: <Grounding>{ value: 0.25, status: "CITED", source: "Simons & Chabris 1999 (46% miss); Hyman 2010 (25% phone-talkers notice); Drew 2013 (83% expert miss). 0.25 = demanding-task anchor of a 0.25–0.85 range" },
+  orientingThreshold: <Grounding>{ value: 0.15, status: "ASSUMED", source: "no literature in this parameterization" },
+  audibilityHalfDistanceMeters: <Grounding>{ value: 50, status: "ASSUMED", source: "no direct literature" },
+  // Tactile/physical-contact floor (schema extension 2): being physically acted
+  // on gives near-certain perception OF THE CONTACT regardless of vision.
+  tactileOnsetFloor: <Grounding>{ value: 0.4, status: "ASSUMED", source: "no literature located for proprioceptive event-report completeness; partial-tier floor, chosen before re-running fixtures" },
 
-  // --- perception: stress (narrowing, never blindness) ---
-  stressAttendedBoostExp: <Grounding>{ value: 0.3, status: "ASSUMED", source: "direction CITED (Christianson 1992 central/gist enhancement, 'tunnel memory'); magnitude unsettled — Deffenbacher 2004 shows overall ID impairment under high stress" },
-  stressPeripheralPenalty: <Grounding>{ value: 0.5, status: "CITED", source: "Easterbrook 1959 (direction); Steblay 1992 feature-accuracy d≈0.55; Fawcett 2013 g≈0.75 peripheral/feature impairment (magnitude mapped to 0.5 multiplier — mapping itself ASSUMED)" },
+  // --- perception: stress ---
+  stressAttendedBoostExp: <Grounding>{ value: 0.3, status: "ASSUMED", source: "direction CITED (Christianson 1992); magnitude unsettled (Deffenbacher 2004)" },
+  stressPeripheralPenalty: <Grounding>{ value: 0.5, status: "CITED", source: "Easterbrook 1959 direction; Steblay 1992 d≈0.55 / Fawcett 2013 g≈0.75 feature impairment (multiplier mapping ASSUMED)" },
 
-  // --- perception tiers (named thresholds — the only permitted discontinuities) ---
+  // --- perception tiers (named thresholds) ---
   perceptionTierEdges: { glimpse: 0.12, partial: 0.35, clear: 0.62, complete: 0.85 },
 
-  // --- recording ---
-  deviceQualityBase: {
-    "door-low": <Grounding>{ value: 0.35, status: "ASSUMED", source: "value mapping ASSUMED; anchored to CAST 28/09 Table 2 (CIF/D1-era legacy systems cannot meet Identify) and IPVM installed-base lag" },
-    "dome-mid": <Grounding>{ value: 0.6, status: "ASSUMED", source: "value mapping ASSUMED; anchored to IPVM (1080p typical new install 2016–20; recorded ~10–15 fps) and CAST wide-area Observe-to-Recognise reality" },
-    "wide-far": <Grounding>{ value: 0.45, status: "ASSUMED", source: "value mapping ASSUMED; wide-FOV lowers px/m at all distances (IEC 62676-4 geometry)" },
-    "phone": <Grounding>{ value: 0.8, status: "ASSUMED", source: "value mapping ASSUMED; modern phone sensors exceed typical installed CCTV" },
-    "phone-2013": <Grounding>{ value: 0.55, status: "ASSUMED", source: "value mapping ASSUMED; 2012–13 phone + platform transcode (Era 5 forensics register: VFR→CFR, recompression)" },
-    "dashcam": <Grounding>{ value: 0.55, status: "ASSUMED", source: "value mapping ASSUMED" },
+  // --- recording: pure DORI pixel geometry (v2 rewrite — replaces the v1
+  //     quality-score curve; eliminates recordingDistanceHalfMeters and
+  //     recordingTierEdges, two ASSUMED constants, entirely) ---
+  pxPerMeterAt1m: {
+    "door-low": <Grounding>{ value: 280, status: "CITED", source: "D1/CIF-class legacy geometry (CAST 28/09 Table 2: CIF cannot meet Identify)" },
+    "dome-mid": <Grounding>{ value: 960, status: "CITED", source: "1080p @ ~90° FOV: 1920/(2·tan45°) = 960 px·m/m" },
+    "wide-far": <Grounding>{ value: 550, status: "CITED", source: "1080p @ ~120° FOV: 1920/(2·tan60°) ≈ 554 px·m/m" },
+    "phone": <Grounding>{ value: 1600, status: "ASSUMED", source: "4K-class @ ~70° FOV; geometry-extrapolated" },
+    "phone-2013": <Grounding>{ value: 500, status: "ASSUMED", source: "720p-class + platform transcode losses (Era 5 forensics register)" },
+    "dashcam": <Grounding>{ value: 700, status: "ASSUMED", source: "geometry-extrapolated" },
   },
-  recordingDistanceHalfMeters: <Grounding>{ value: 20, status: "ASSUMED", source: "usability (not identification) halving distance; identification handled separately by identifyRangeMeters. Known limitation: person-scale calibration — no subject-scale term (see report)" },
-  // Identification is a GEOMETRIC chokepoint outcome, not a score threshold:
-  // IEC 62676-4 Identify = 250 px/m; a 1080p ~90°-FOV camera gives ~960/d px/m
-  // → Identify only within ~4 m. Per-tier ranges derived from that geometry.
-  identifyRangeMeters: {
-    "door-low": <Grounding>{ value: 1.5, status: "CITED", source: "CAST 28/09 Table 2: CIF-class cannot meet Identify except point-blank" },
-    "dome-mid": <Grounding>{ value: 4.5, status: "CITED", source: "IEC 62676-4: 250 px/m; 1080p ~90° FOV ⇒ ~960/d px/m ⇒ ~3.8–4.5 m" },
-    "wide-far": <Grounding>{ value: 2.5, status: "CITED", source: "wider FOV ⇒ lower px/m ⇒ shorter identify range (same geometry)" },
-    "phone": <Grounding>{ value: 8, status: "ASSUMED", source: "4K-capable narrow FOV; geometry-extrapolated, not published" },
-    "phone-2013": <Grounding>{ value: 3.5, status: "ASSUMED", source: "720p-class + transcode" },
-    "dashcam": <Grounding>{ value: 4, status: "ASSUMED", source: "geometry-extrapolated" },
-  },
-  // Even identification-grade footage supports UNFAMILIAR-viewer identification
-  // poorly: Bruce et al. 2001 — 70% overall, 56% hard mismatches (near chance).
-  // identifySupport therefore means "meets identify-grade DETAIL", never
-  // "identification succeeds" — the downstream epistemics own that.
+  // DORI task thresholds in px on a person-scale (1.7 m) subject:
+  // Identify 250 px/m ⇒ 425 px; Recognise 125 ⇒ 212.5; Observe 62.5 ⇒ 106.25; Detect 25 ⇒ 42.5.
+  // CITED: IEC 62676-4:2014 densities × CAST 1.7 m reference. (2025 revision
+  // roughly doubles these under heavy compression — 2014 figures used, caveat noted.)
+  doriPersonPx: { identify: 425, recognise: 212.5, observe: 106.25, detect: 42.5, trace: 12 },
   lightingRecordingFactor: {
     "daylight": 1.0, "indoor-fluorescent-good": 0.9, "night-streetlit": 0.6, "dark": 0.25,
-  },
-  // EM corruption: exposure = emSideEffect * proximity within radius; corruption thresholds are named.
-  emCorruptionEdges: { degraded: 0.3, unrecoverable: 0.6 },
-  recordingTierEdges: { trace: 0.12, degraded: 0.3, usable: 0.55, sharp: 0.8 },
+  }, // ASSUMED multipliers on effective px
+  emCorruptionEdges: { degraded: 0.3, unrecoverable: 0.6 }, // ASSUMED thirds; results insensitive at corruption = 1.0
   seededNoiseAmplitude: <Grounding>{ value: 0.04, status: "ASSUMED", source: "residual variation; deterministic via committed seed" },
 
-  // --- NAMED DESIGN LEVER 1: reaction-time floor (seconds) ---
-  // Reported to the user with source + balance statement; not an implementation detail.
-  reactionFloorSeconds: <Grounding>{ value: 7.0, status: "ASSUMED", source: "component-sum FLOOR, components sourced: surprise perception-response ~1.5s (Green 2000) + pocket retrieval ~4.6s (Ashbrook CHI 2008 'Quickdraw') + quick-launch camera ~0.5–1s (vendor-grade) + aim ~1s (unsourced) ≈ 7s primed minimum. Median realistic start 10–15s (appraisal term UNSOURCED). No direct bystander recording-onset literature exists — flagged ASSUMED as a whole; floor well-anchored, median soft" },
-  // Typical (median) start for long events — appraisal-dominated, unsourced.
-  reactionTypicalStartSeconds: <Grounding>{ value: 12.0, status: "ASSUMED", source: "median 10–15s per component analysis; appraisal/decision term has no literature" },
-  // Filming propensity: the appraise-and-decide gate — the fraction of
-  // perceiving, phone-carrying bystanders who actually film. Research-driven
-  // addition made AFTER the second pre-registration and BEFORE the scored run
-  // (documented in the report): without it every able bystander films, which
-  // contradicts every empirical anchor.
-  filmingPropensity: <Grounding>{ value: 0.06, status: "ASSUMED", source: "V2 register: 1–10% of bystanders capture ≥1 clip over a sustained incident (ASSUMED band, no published rate); Pew 2014: 7% of US adults had ever posted news video (floor anchor). Constant for the spike; salience-scaling deferred" },
+  // --- NAMED DESIGN LEVER 1: reaction floor → PER-OBSERVER DISTRIBUTION (Ruling C) ---
+  // Log-normal, median 7 s, sigma 0.55, truncated at 2 s physiological minimum:
+  // P(<3s)≈6% (phone-in-hand), P(<5s)≈27%, P(>20s)≈2.8% (bags/gloves/slow appraisal).
+  // NOT adjusted against any fixture (Ruling A answer: independent).
+  reactionFloorMedianSeconds: <Grounding>{ value: 7.0, status: "ASSUMED", source: "component-sum floor, components sourced (Green 2000 surprise-RT 1.5s + Ashbrook 2008 retrieval 4.6s + quick-launch 0.5–1s + aim ~1s); appraisal median unsourced" },
+  reactionFloorSigma: <Grounding>{ value: 0.55, status: "ASSUMED", source: "no distributional literature; percentile shape chosen for physical plausibility; swept 0.4–0.7 in report" },
+  reactionFloorMinSeconds: <Grounding>{ value: 2.0, status: "ASSUMED", source: "physiological minimum: orient + raise, phone already in hand" },
 
-  // --- NAMED DESIGN LEVER 2: already-recording generation rate (per bystander, by context) ---
-  // Used by sweeps/scene-population, not by explicit fixtures (fixtures state it directly).
+  // --- FITTED (Ruling A): cannot count toward validation ---
+  filmingPropensity: <Grounding>{ value: 0.06, status: "FITTED", source: "FITTED: mechanism introduced after 2nd pre-registration when inspection showed ~50 recordings/100 bystanders without it; value chosen from the V2 register band (1–10%, itself ASSUMED; Pew 7%-ever floor) so expected output lands inside the ET2 band — chosen against the target. Needs independent validation before ledger promotion. Constant; salience-scaling REQUIRED (Carrer arithmetic) and deferred" },
+
+  // --- NAMED DESIGN LEVER 2: already-recording rate (per bystander, by context) ---
+  // Set from the V2 register bands BEFORE any fixture or sweep ran (not fitted).
   alreadyRecordingRate: {
-    "street": <Grounding>{ value: 0.005, status: "ASSUMED", source: "V2 register 5.4: no direct measurement exists; ASSUMED band 0.1–1% in ordinary public settings (LOW confidence), midpoint taken" },
-    "store": <Grounding>{ value: 0.002, status: "ASSUMED", source: "below street baseline; judgment on the same ASSUMED band" },
-    "event-crowd": <Grounding>{ value: 0.05, status: "ASSUMED", source: "recording-normative settings (performances/rallies) sit above baseline; ASSUMED, LOW" },
-    "home": <Grounding>{ value: 0.005, status: "ASSUMED", source: "video-call prevalence; ASSUMED" },
+    "street": <Grounding>{ value: 0.005, status: "ASSUMED", source: "V2 register 5.4 band 0.1–1% (LOW), midpoint; set pre-run" },
+    "store": <Grounding>{ value: 0.002, status: "ASSUMED", source: "below street baseline; set pre-run" },
+    "event-crowd": <Grounding>{ value: 0.05, status: "ASSUMED", source: "recording-normative settings; set pre-run" },
+    "home": <Grounding>{ value: 0.005, status: "ASSUMED", source: "video-call prevalence; set pre-run" },
   },
-  // Sustained-incident capture band (validation target ET2, itself ASSUMED):
-  // 1–10% of bystanders capture ≥1 clip over a salient sustained smartphone-era
-  // incident (V2 register 4.5: Boston ~2.6/100/event-day upper anchor; 7/7
-  // ~0.03/100 pre-smartphone lower anchor; no published rate exists).
   sustainedCaptureBand: { min: 0.01, max: 0.10 },
 };
 

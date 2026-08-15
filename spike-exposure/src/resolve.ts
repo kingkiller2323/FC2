@@ -1,49 +1,69 @@
 import { P } from "./params.js";
 import { resolvePerception } from "./perception.js";
-import { resolveRecording, mulberry32 } from "./recording.js";
-
-function hashId(s: string): number {
-  let h = 2166136261;
-  for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
-  return h >>> 0;
-}
+import { resolveRecording, mulberry32, hashId } from "./recording.js";
 import type {
-  BelievedScene, BystanderRecording, ExposureLedgerEntry, ObjectiveScene, PerceptionRecord,
+  BelievedScene, BystanderRecording, EventPhase, ExposureLedgerEntry, ObjectiveScene, PerceptionRecord,
 } from "./types.js";
 
 // The exposure ledger resolution. Same functions serve Layer 1 (objective) and
-// Layer 2 (believed/estimate) — the layers are distinct branded input types and
-// are NEVER merged.
+// Layer 2 (believed/estimate) — distinct branded input types, never merged.
+
+// Per-observer reaction floor (Ruling C): log-normal(median, sigma), truncated
+// at the physiological minimum, drawn deterministically per observer+seed.
+export function observerReactionFloor(custodian: string, seed: number): number {
+  const rng = mulberry32((seed ^ hashId("floor:" + custodian)) >>> 0);
+  // Box–Muller from two deterministic uniforms.
+  const u1 = Math.max(1e-12, rng()), u2 = rng();
+  const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+  const draw = Math.exp(Math.log(P.reactionFloorMedianSeconds.value) + P.reactionFloorSigma.value * z);
+  return Math.max(P.reactionFloorMinSeconds.value, draw);
+}
+
+// Schema ext. 4: phase helpers. Absent phases ⇒ whole event is one salient,
+// anomalous phase starting at 0.
+function phasesOf(dur: number, phases?: EventPhase[]): EventPhase[] {
+  return phases && phases.length > 0
+    ? phases
+    : [{ name: "event", startSecond: 0, durationSeconds: dur, salient: true, anomalous: true }];
+}
 
 function bystanderPaths(scene: ObjectiveScene | BelievedScene, perceptions: PerceptionRecord[]): BystanderRecording[] {
   const out: BystanderRecording[] = [];
   const dur = scene.event.durationSeconds;
+  const ph = phasesOf(dur, scene.event.phases);
+  const firstSalientStart = Math.min(...ph.filter(p => p.salient).map(p => p.startSecond));
+  const anomalous = ph.filter(p => p.anomalous);
+  const coversAnomaly = (from: number) =>
+    anomalous.some(a => from < a.startSecond + a.durationSeconds);
+
   for (const c of scene.carried) {
     if (c.alreadyRecording) {
       // Amendment 2b path 2: NOT gated on perception or the reaction floor.
       out.push({
         custodian: c.custodian, path: "already-recording",
-        startedAtSecond: 0, // was rolling before onset
-        capturedSeconds: dur,
-        aimedAtEvent: c.aimedAtEventIfRecording ?? false, // unrelated aim: usually wrong
+        startedAtSecond: 0, capturedSeconds: dur,
+        capturedAnomalousPhase: anomalous.length > 0,
+        aimedAtEvent: c.aimedAtEventIfRecording ?? false,
       });
       continue;
     }
-    // Path 1 (reactive): requires perception ≥ glimpse, the filming-propensity
-    // gate (the appraise-and-decide term — most people who can film never do;
-    // research-driven addition, see params.filmingPropensity), then the
-    // reaction floor.
+    // Path 1 (reactive): perception ≥ glimpse → filming-propensity gate
+    // (FITTED — see params) → per-observer reaction floor measured from the
+    // FIRST SALIENT PHASE, not from the anomalous moment (Ruling B).
     const p = perceptions.find(x => x.observerId === c.custodian);
     if (!p || (p.onsetTier === "none" && !p.orientedDuringEvent)) continue;
     const decides = mulberry32((scene.seed ^ hashId(c.custodian)) >>> 0)() < P.filmingPropensity.value;
     if (!decides) continue;
-    const start = P.reactionFloorSeconds.value;
+    const start = firstSalientStart + observerReactionFloor(c.custodian, scene.seed);
     const captured = Math.max(0, dur - start);
     if (captured > 0) {
-      out.push({ custodian: c.custodian, path: "reactive", startedAtSecond: start, capturedSeconds: captured, aimedAtEvent: true });
+      out.push({
+        custodian: c.custodian, path: "reactive",
+        startedAtSecond: start, capturedSeconds: captured,
+        capturedAnomalousPhase: coversAnomaly(start),
+        aimedAtEvent: true,
+      });
     }
-    // captured === 0 → no contemporaneous footage; aftermath photography remains
-    // possible but is aftermath-evidence territory (contract class, out of spike).
   }
   return out;
 }

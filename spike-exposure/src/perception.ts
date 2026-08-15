@@ -5,9 +5,12 @@ import type { ExposureEvent, Lighting, ObserverState, PerceptionRecord, Percepti
 // with the event signature as stimulus. Continuous internal score in [0,1];
 // committed tier at named thresholds only.
 
-function distanceFactor(d: number, lighting: Lighting): number {
+function distanceFactor(d: number, lighting: Lighting, subjectScale: number): number {
+  // Schema ext. 1: visual angle ∝ size/distance — subject scale rescales
+  // effective distance against the 1.7 m person reference.
   const half = P.distanceHalfMeters[lighting].value;
-  return clamp01(1 / (1 + d / half));
+  const dEff = d * (P.personReferenceScaleMeters.value / Math.max(0.2, subjectScale));
+  return clamp01(1 / (1 + dEff / half));
 }
 
 function offAxisFactor(angleDeg: number): number {
@@ -60,19 +63,26 @@ export function toPerceptionTier(score: number): PerceptionTier {
 }
 
 export function resolvePerception(event: ExposureEvent, lighting: Lighting, o: ObserverState): PerceptionRecord {
+  // Schema ext. 3: the event declares its spatial/attentional extent — an
+  // observer attending any declared key is attending the event, not elsewhere.
+  const keys = event.attentionKeys ?? ["event", "scene"];
   const attendedOnEvent = o.attention === "attended" && o.attentionTarget !== null &&
-    /event|cart|priya|scene/i.test(o.attentionTarget);
+    keys.some(k => o.attentionTarget!.toLowerCase().includes(k.toLowerCase()));
 
   // --- onset phase: geometry as-found at t0 ---
   const sensoryFactor = o.sensory === "impaired" ? 0.5 : 1.0;
+  const subjectScale = event.signature.subjectScaleMeters ?? P.personReferenceScaleMeters.value;
   const visBase =
     visualStimulus(event) *
-    distanceFactor(o.distanceMeters, lighting) *
+    distanceFactor(o.distanceMeters, lighting, subjectScale) *
     offAxisFactor(o.offAxisDegrees) *
     (1 - o.occlusion) *
     sensoryFactor;
   const gated = visBase * attentionGate(o, attendedOnEvent);
-  const onsetScore = stressTransform(gated, o, attendedOnEvent);
+  let onsetScore = stressTransform(gated, o, attendedOnEvent);
+  // Schema ext. 2: physical contact gives near-certain perception of the
+  // contact itself, regardless of facing (tactile floor).
+  if (o.tactileContact) onsetScore = Math.max(onsetScore, P.tactileOnsetFloor.value);
 
   // --- orienting: does the observer turn toward it at all? ---
   const heard = audibleSalience(event, o.distanceMeters) * sensoryFactor;
@@ -90,7 +100,7 @@ export function resolvePerception(event: ExposureEvent, lighting: Lighting, o: O
       visualStimulus(event) * 0.9 + 0.1 /* aftermath is scene-state: always something to see */;
     const aftermath =
       clamp01(facingScore) *
-      distanceFactor(o.distanceMeters, lighting) *
+      distanceFactor(o.distanceMeters, lighting, subjectScale) *
       (1 - o.occlusion * 0.5) /* observers reposition around partial occlusion */ *
       sensoryFactor;
     overallScore = Math.max(onsetScore, aftermath * (orientedDuringEvent ? 1.0 : 0.9));

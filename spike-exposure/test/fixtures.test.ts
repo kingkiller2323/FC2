@@ -8,7 +8,7 @@ function loadScene(file: string): ObjectiveScene {
   return {
     layer: "objective",
     seed: j.seed,
-    event: { id: j.event.id, mode: j.event.mode, durationSeconds: j.event.durationSeconds, signature: j.event.signature },
+    event: { id: j.event.id, mode: j.event.mode, durationSeconds: j.event.durationSeconds, signature: j.event.signature, phases: j.event.phases, attentionKeys: j.event.attentionKeys },
     lighting: j.lighting,
     observers: j.observers,
     devices: j.devices,

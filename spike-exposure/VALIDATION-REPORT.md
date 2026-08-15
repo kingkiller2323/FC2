@@ -66,3 +66,115 @@ Mechanic: **0 reactive recordings** (8 carriers × 0.06 propensity ≈ 0.5 expec
 - Recording-tier semantics need a task anchor (map tiers to DORI tasks explicitly: usable ≈ Observe, sharp ≈ Recognise+) so "usable for what?" stops being ambiguous — the cam3 divergence is partly semantic.
 - Salience-scaled filming propensity before any crowd-scene fixture is trusted.
 - The two levers (below) go to the user for ruling; everything else is engineering.
+
+---
+
+# V2 ITERATION (Rulings A–E applied)
+
+## Ruling A — ASSUMED vs FITTED relabel, and the direct answer
+
+Every parameter now carries `CITED | ASSUMED | FITTED`. Exactly ONE parameter is
+FITTED: **filmingPropensity (0.06)** — the mechanism was introduced after the
+second pre-registration because inspection showed ~50 recordings/100 bystanders
+without it, and its value was chosen from the register band so expected output
+lands inside the ET2 band. It is labeled contaminated in source, cannot count
+toward validation, and needs independent validation (staged-event or
+forensic-review data) before ledger promotion.
+
+**Direct answer to the question asked:** Lever 1 (7.0 s) was built from the
+component sum (Green + Ashbrook + launch specs) before any fixture ran against
+it and was never adjusted afterward — independent. Lever 2's rates were set
+from the V2 register bands in the grounding pass, before ET2 or any sweep ran —
+independent. Neither lever was tuned to Powered History: the Carrer comparison
+happened after both were locked, and the model UNDER-produces canon texture
+(0 vs ~4 videos), which is direct evidence against canon-fitting. The earlier
+report's "reproduces the evidence texture" phrasing described a post-hoc
+observation, not a tuning criterion — but the criticism stands: it should never
+have been presented as a virtue, and is not counted as one now.
+
+## Schema extensions 1–4: results (all fixtures re-run)
+
+- **Mundane control: 6/6 — all pre-registered predictions now pass.** The
+  subject-scale term (ext. 1) fixed both v1 failures with a CITED mechanism
+  (visual angle ∝ size/distance; DORI px-on-subject): b1's aftermath reaches
+  `clear`, the lot dome reaches `usable` (car at 25 m ≈ 154 px ≥ Observe-grade)
+  while a *person* at the same camera is `degraded` (65 px) — one mechanism,
+  both scales correct.
+- **Recording model rewritten onto pure DORI pixel geometry** — this *removed*
+  two ASSUMED constants (`recordingDistanceHalfMeters`, `recordingTierEdges`)
+  and replaced them with CITED px thresholds. Tier semantics are now task-
+  anchored: sharp ≥ Recognise, usable ≥ Observe, degraded ≥ Detect.
+- **V4 regression improved:** Priya onset `partial` (tactile floor, ext. 2 —
+  matches judgment exactly); Ruth onset `glimpse`/overall `partial` (attention-
+  extent, ext. 3 — within ±1 of judgment, the order-distortion geometry now
+  mechanically representable); Dana `clear` vs `complete` (1 tier, stress-boost
+  magnitude); cams 6/7, zero bystander footage, Priya onset<overall all still
+  reproduce. **Remaining divergence: cam3 `trace` vs judgment "usable"** — at
+  the fixture's stated geometry (wide-far 1080p @ 30 m, subject 2.5 m) DORI
+  arithmetic gives ~41 px ≈ Detect-grade; the judgment's "usable" was optimistic
+  OR the fixture's distance/FOV transcription is generous. Honestly unresolved;
+  flagged for the fixture-geometry audit at ledger promotion. Note the S4 chain
+  survives either way: "register 2 visibly unmanned" is a Detect-grade claim
+  (person-presence/absence), not an Observe-grade one.
+- **ET1: 2/3 sub-assertions pass; one honest miss at exactly 4 m** — the
+  pre-registration rounded the dome-mid identify boundary to "≤4 m"; the DORI
+  arithmetic gives 3.84 m (960/4 × 1.7 = 408 px < 425). Boundary error of 4%,
+  in the pre-registration, not the model. The chokepoint claim itself is
+  unaffected. ET2 re-passes (8 captures, in band).
+
+## Ruling B — Carrer v2: arithmetic and honest outcome
+
+**The arithmetic (as demanded):** v1 fixture had 15 observers / 8 carriers
+(under-transcribed canon's "dozens" — corrected, disclosed, to 36/18 at 2013
+~50% smartphone-camera penetration). Compound gate per bystander: carry 0.5 ×
+perceive ~0.9 × propensity 0.06 ⇒ ~2.7%. E[reactive] = 18 × 0.06 ≈ 1.08;
+P(zero) = 0.94¹⁸ ≈ 33% — and this seed drew zero (all 18 draws ≥ 0.075).
+Canon's ~4 videos from ~36 present implies ~11% per-bystander capture — 4×
+the FITTED constant. **FIFTH FINDING confirmed: the gates compound to
+near-zero**, and the binding gate is the FITTED propensity, not the floor.
+
+**Phase structure did its job but did not close the count gap:** with the
+reaction clock starting at the van crash (phase 1) and the anomaly at 17–25 s,
+any recording that exists now covers the anomalous phase with ~99% probability
+(P(floor < 25 s) ≈ 99% at median 7/σ 0.55) — v1's structural impossibility is
+gone; what remains is purely the propensity count. A salience-scaled propensity
+of ~0.3–0.5 for a man-pinned-under-van event would yield 5–9 recordings ≈
+canon texture — but implementing that number NOW would be fitting to canon, so
+it is stated as arithmetic and deferred to independent grounding (documented
+bystander-video counts at attested incidents of known salience).
+
+## Ruling C — Lever 1 as distribution
+
+Implemented: per-observer log-normal, median 7.0 s, σ = 0.55, truncated at
+2.0 s, drawn deterministically per observer+seed. Percentile sweep:
+
+| σ | P(<3 s) | P(<5 s) | P(>10 s) | P(>20 s) |
+|---|---|---|---|---|
+| 0.40 | 1.7% | 20.0% | 18.6% | 0.4% |
+| **0.55 (proposed)** | **6.2%** | **27.0%** | **25.8%** | **2.8%** |
+| 0.70 | 11.3% | 31.5% | 30.5% | 6.7% |
+
+σ = 0.55 recommended: ~6% quick-draws (phone already in hand) honors
+Ashbrook's retrieval-dominance finding, ~3% slow tail (bags, gloves, frozen
+appraisal) stays plausible. σ = 0.70 over-produces sub-3 s draws against the
+4.6 s retrieval anchor. The cliff is gone: "is my power under 7 seconds" is now
+a risk curve, not a binary.
+
+## Ruling D — the design property, named
+
+**AMBIENT DEVICE DENSITY IS THE SETTING-LEVEL DIFFICULTY DIAL.** Because the
+floor distribution makes reactive capture of short events rare-but-possible and
+the already-recording path is ungated, the effective exposure risk of a fast
+power is set almost entirely by Lever 2's context rates. A designer tunes the
+exposure game per setting (store vs street vs rally vs 2013 vs 2026) by setting
+one table — no mechanics change. This is the lever a difficulty system will
+eventually hang from.
+
+## Status after v2
+
+23/24 (the one failure is the pre-registered ET1 rounding miss, kept honest).
+FITTED count: 1 (filmingPropensity — blocks ledger promotion until
+independently validated). TOP-FLAGGED: detectionDetailBlendFloor (see
+params.ts header — tier-flipping authority, pure interpolation; grounding
+requires staged-event completeness-vs-eccentricity data that does not exist in
+the literature as parameterized).

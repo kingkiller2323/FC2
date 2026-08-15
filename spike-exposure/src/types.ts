@@ -12,6 +12,18 @@ export interface EventSignature {
   emSideEffect: number;      // 0..1 electronics disruption strength
   physicalSideEffect: number;
   radiusMeters: number;      // EM side-effect radius (0 = none)
+  subjectScaleMeters?: number; // schema ext. 1: size of the primary visible subject (default 1.7 = person)
+}
+
+// Schema ext. 4: events carry PHASE STRUCTURE, not a duration scalar. The
+// reaction clock starts at the first salient phase; the anomaly may land in a
+// later phase with devices already rolling (the Lisbon/Carrer shape).
+export interface EventPhase {
+  name: string;
+  startSecond: number;
+  durationSeconds: number;
+  salient: boolean;          // does this phase plausibly trigger orienting/filming?
+  anomalous?: boolean;       // is this the phase that matters for exposure?
 }
 
 export interface ExposureEvent {
@@ -19,6 +31,8 @@ export interface ExposureEvent {
   mode: "accidental" | "deliberate";
   durationSeconds: number;
   signature: EventSignature;
+  phases?: EventPhase[];       // schema ext. 4 (absent ⇒ single-phase event)
+  attentionKeys?: string[];    // schema ext. 3: attention targets that count as ON the event's spatial extent
 }
 
 export type Lighting = "daylight" | "indoor-fluorescent-good" | "night-streetlit" | "dark";
@@ -32,6 +46,7 @@ export interface ObserverState {
   attentionTarget: string | null; // when attended: is the target the event itself?
   stress: number;            // 0..1 acute arousal at event time
   sensory: "normal" | "impaired";
+  tactileContact?: boolean;  // schema ext. 2: physically acted on by the event
 }
 
 export type DeviceQualityTier = "door-low" | "dome-mid" | "wide-far" | "phone" | "phone-2013" | "dashcam";
@@ -97,6 +112,7 @@ export interface BystanderRecording {
   path: "reactive" | "already-recording";
   startedAtSecond: number;        // relative to event onset
   capturedSeconds: number;        // of the event itself (0 = aftermath only)
+  capturedAnomalousPhase: boolean;// schema ext. 4: was the anomalous phase recorded?
   aimedAtEvent: boolean;
 }
 

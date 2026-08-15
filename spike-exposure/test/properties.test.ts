@@ -110,7 +110,7 @@ describe("V1 recording properties", () => {
   }) as fc.Arbitrary<DeviceState>;
 
   it("fidelity ordered by quality tier at fixed geometry (no EM, in view)", () => {
-    const order = ["door-low", "wide-far", "phone-2013", "dome-mid", "phone"] as const;
+    const order = ["door-low", "phone-2013", "wide-far", "dashcam", "dome-mid", "phone"] as const; // px/m ascending (DORI geometry)
     fc.assert(fc.property(arbEvent, arbLighting, fc.double({ min: 1, max: 80, noNaN: true }), fc.integer(), (e, L, d, seed) => {
       const ev = { ...e, signature: { ...e.signature, emSideEffect: 0 } };
       const scores = order.map(q => resolveRecording(ev, L, {
