@@ -51,7 +51,15 @@ export function resolveRecording(event: ExposureEvent, lighting: Lighting, d: De
   if (corruption >= P.emCorruptionEdges.unrecoverable) fidelity = Math.min(fidelity, 0.1); // critical seconds unrecoverable
   else if (corruption >= P.emCorruptionEdges.degraded) fidelity = fidelity * (1 - corruption);
 
-  const identifySupport = fidelity >= P.identifySupportThreshold.value && corruption < P.emCorruptionEdges.degraded;
+  // Identification is a geometric chokepoint outcome (IEC 62676-4: 250 px/m ⇒
+  // ~4 m for a 1080p ~90°-FOV camera), degraded further by poor light — never a
+  // generic score threshold. And identify-grade DETAIL ≠ identification
+  // succeeding (Bruce et al. 2001: unfamiliar matching 70%/56% even on good
+  // video) — downstream epistemics own that.
+  const identifySupport =
+    d.distanceMeters <= P.identifyRangeMeters[d.qualityTier].value &&
+    lightF >= 0.6 &&
+    corruption < P.emCorruptionEdges.degraded;
 
   return {
     deviceId: d.id,

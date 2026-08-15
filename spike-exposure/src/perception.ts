@@ -11,11 +11,21 @@ function distanceFactor(d: number, lighting: Lighting): number {
 }
 
 function offAxisFactor(angleDeg: number): number {
+  // Research-grounded split (V2): event DETECTION persists far into the
+  // periphery (Thorpe 2001: ~93% → 60.6% at 70°), while DETAIL acuity falls
+  // steeply (E2 ≈ 2.3°, Strasburger 2011). Completeness blends the two:
+  // detection × (blendFloor + (1 − blendFloor) × detail).
   const a = Math.abs(angleDeg);
-  if (a >= P.visualFieldLimitDegrees.value) return 0; // named threshold: outside the visual field
-  return clamp01(1 / (1 + a / P.eccentricityE2.value) + 0.06 * (1 - a / P.visualFieldLimitDegrees.value));
-  // second term: peripheral motion/flash detection floor — periphery detects that
-  // *something* happened long after it stops resolving what.
+  const limit = P.visualFieldLimitDegrees.value;
+  if (a >= limit) return 0; // named threshold: outside the visual field
+  const det70 = P.detectionAt70Degrees.value;
+  const detection =
+    a <= 70
+      ? 1 - (1 - det70) * (a / 70)
+      : det70 * (1 - (a - 70) / (limit - 70));
+  const detail = 1 / (1 + a / P.eccentricityE2.value);
+  const bf = P.detectionDetailBlendFloor.value;
+  return clamp01(detection * (bf + (1 - bf) * detail));
 }
 
 function audibleSalience(event: ExposureEvent, d: number): number {

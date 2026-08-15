@@ -1,6 +1,12 @@
 import { P } from "./params.js";
 import { resolvePerception } from "./perception.js";
-import { resolveRecording } from "./recording.js";
+import { resolveRecording, mulberry32 } from "./recording.js";
+
+function hashId(s: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return h >>> 0;
+}
 import type {
   BelievedScene, BystanderRecording, ExposureLedgerEntry, ObjectiveScene, PerceptionRecord,
 } from "./types.js";
@@ -23,9 +29,14 @@ function bystanderPaths(scene: ObjectiveScene | BelievedScene, perceptions: Perc
       });
       continue;
     }
-    // Path 1 (reactive): requires perception ≥ glimpse, then the reaction floor.
+    // Path 1 (reactive): requires perception ≥ glimpse, the filming-propensity
+    // gate (the appraise-and-decide term — most people who can film never do;
+    // research-driven addition, see params.filmingPropensity), then the
+    // reaction floor.
     const p = perceptions.find(x => x.observerId === c.custodian);
     if (!p || (p.onsetTier === "none" && !p.orientedDuringEvent)) continue;
+    const decides = mulberry32((scene.seed ^ hashId(c.custodian)) >>> 0)() < P.filmingPropensity.value;
+    if (!decides) continue;
     const start = P.reactionFloorSeconds.value;
     const captured = Math.max(0, dur - start);
     if (captured > 0) {

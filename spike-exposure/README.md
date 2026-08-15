@@ -5,22 +5,18 @@ corruption/survival — per the ratified design (Craft note: "Exposure Spike —
 Ratified Design & Validation Plan"). This is a spike, not the runtime; the
 functions are pure and intended to land in the M2/M3 runtime unchanged.
 
-## Status: PRE-GROUNDING (honest)
+## Status: GROUNDED (see VALIDATION-REPORT.md)
 
-- **V1 property sweeps: ALL PASS** (monotonicity, no unnamed cliffs, stress =
-  narrowing never blindness, tier ordering, determinism incl. seeded noise,
-  NULL-EXPOSURE invariant, two-layer invariant).
-- **V3/V4 scored fixtures: 3 FAILURES on ASSUMED placeholder parameters** —
-  committed failing on purpose. Predictions were pre-registered (see
-  predictions/PREREGISTERED.md, committed before any function existed) and the
-  parameters may only be set from V2 external research, never tuned against the
-  fixtures. Known parameter defects the failures already exposed:
-  1. the eccentricity curve applies letter-acuity falloff to event *detection*
-     — peripheral detection of salient events is far better than detail acuity;
-  2. the recording distance curve is too punishing (a mid dome at 25 m daylight
-     should be usable; cam3-at-30 m must not collapse to trace).
-- Next: V2 research lands → parameters grounded with citations (or flagged
-  ASSUMED) → scored fixtures run once → report.
+- V1 property sweeps: 11/11 pass.
+- V2 grounding applied: 12 CITED parameter groups; ASSUMED flags listed
+  prominently in the report.
+- V3 scored: mundane control 4/6 (both failures = one root cause, the missing
+  subject-scale term — not tuned away); ET1 identification geometry 3/3;
+  ET2 bystander prevalence in band.
+- V4 regression: load-bearing gap-run-01 outcomes reproduce (camera loss,
+  no bystander footage, witness-divergence driver); every divergence explained
+  by three named model limitations.
+- Named design levers (reaction floor 7 s; already-recording rates) await user
+  ruling — see VALIDATION-REPORT.md.
 
-`npm test` runs everything; the scored-fixture failures are the current honest
-state, not a broken build.
+`npm test` — 22/24; the two honest failures are documented in the report.
