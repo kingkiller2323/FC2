@@ -54,3 +54,32 @@ Not a validation target. The functions' outputs are diffed against the
 judgment outcomes recorded in the fixture; each divergence is explained in the
 report. Divergence is a finding, not automatically a failure (judgment n=1 is
 not ground truth). The frozen Craft baseline is untouched.
+
+---
+
+## SECOND PRE-REGISTRATION — external empirical targets (committed after research
+## returned anchors, BEFORE the functions run against them)
+
+Research anchors (V2 register): IEC 62676-4 DORI densities (Identify 250 px/m,
+Recognise 125, Observe 62.5, Detect 25 — HIGH confidence); a 1080p ~90°-FOV
+camera yields ~960/d px/m, so Identify holds only within ~4 m; Bruce et al.
+2001 (unfamiliar-face matching 70% overall, 56% on hard mismatches even from
+good video); bystander capture rates have NO published measurement — the
+register's ASSUMED band is 1–10% of bystanders capturing ≥1 clip over a
+sustained smartphone-era incident, instantaneous already-recording 0.1–1% in
+ordinary public settings.
+
+**ET1 — identification geometry (scored, exact):** with grounded identify
+ranges, `identifySupport` must be FALSE for a dome-mid camera beyond 6 m and
+for a wide-far camera beyond 4 m, and TRUE for dome-mid at ≤4 m in good light
+with no corruption. Consequence to confirm: NO fixed camera in any of the three
+fixtures produces identification-grade capture — identification is a
+chokepoint outcome, not a wide-area outcome.
+
+**ET2 — bystander prevalence (scored, band):** population sweep, 100 bystanders,
+sustained (120 s) salient public street event, smartphone era, mixed
+attention/geometry profile: total distinct captures (reactive +
+already-recording) must land within **1–10**; already-recording contributors
+within **0–2** (0.1–1 expected at street baseline). The band is the research
+register's ASSUMED recommendation — scored against it honestly as
+band-membership, with the band's ASSUMED status stated in the report.
