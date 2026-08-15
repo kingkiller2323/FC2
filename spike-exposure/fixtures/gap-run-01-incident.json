@@ -1,0 +1,45 @@
+{
+  "$comment": "TRANSCRIPTION of the frozen gap-run-01 Day-4 incident inputs (Craft Hidden World objective ledger). The Craft source is the regression baseline and is NOT modified by this spike. Seed matches the run record.",
+  "fixture": "gap-run-01-incident",
+  "role": "V4 REGRESSION ONLY",
+  "seed": 20260817,
+  "event": {
+    "id": "gr1-e-incident",
+    "mode": "accidental",
+    "at": "2026-08-20T21:12:40",
+    "durationSeconds": 2,
+    "signature": {
+      "visibility": "effects-only",
+      "visualMagnitude": 0.7,
+      "audibility": 0.9,
+      "emSideEffect": 1.0,
+      "physicalSideEffect": 0.3,
+      "radiusMeters": 3
+    },
+    "compoundStimulus": "cart-fall (visible+audible, ~1.5s) immediately preceding/overlapping burst effects (lights, registers, freezer, 2s)"
+  },
+  "lighting": "indoor-fluorescent-good",
+  "observers": [
+    { "id": "dana",  "distanceMeters": 0.5, "offAxisDegrees": 0,   "occlusion": 0.0, "attention": "attended", "attentionTarget": "cart/priya", "stress": 0.9, "sensory": "normal", "note": "source of the burst; acting (the pull)" },
+    { "id": "priya", "distanceMeters": 1.0, "offAxisDegrees": 170, "occlusion": 0.0, "attention": "attended", "attentionTarget": "shelf (facing away)", "stress": 0.9, "sensory": "normal", "note": "yanked backward mid-event; turns after onset" },
+    { "id": "ruth",  "distanceMeters": 9.0, "offAxisDegrees": 10,  "occlusion": 0.0, "attention": "attended", "attentionTarget": "freezer case", "stress": 0.6, "sensory": "normal", "note": "attention locked on freezer case during effects" },
+    { "id": "kyle",  "distanceMeters": 25.0, "offAxisDegrees": 90, "occlusion": 1.0, "attention": "attended", "attentionTarget": "phone", "stress": 0.1, "sensory": "normal", "note": "back corridor, wall-occluded; only corridor lights visible to him" }
+  ],
+  "devices": [
+    { "id": "cam6", "kind": "dome",  "qualityTier": "dome-mid", "distanceMeters": 2.5, "inFieldOfView": true,  "emExposed": true,  "operating": true, "retentionDays": 30 },
+    { "id": "cam7", "kind": "dome",  "qualityTier": "dome-mid", "distanceMeters": 3.0, "inFieldOfView": true,  "emExposed": true,  "operating": true, "retentionDays": 30 },
+    { "id": "cam3", "kind": "wide",  "qualityTier": "wide-far", "distanceMeters": 30.0, "inFieldOfView": true, "emExposed": false, "operating": true, "retentionDays": 30, "note": "partial long view down aisle 7; register foreground" },
+    { "id": "door", "kind": "door",  "qualityTier": "door-low", "distanceMeters": 40.0, "inFieldOfView": false, "emExposed": false, "operating": true, "retentionDays": 30 }
+  ],
+  "observerCarriedDevices": [
+    { "custodian": "ruth", "kind": "phone", "alreadyRecording": false },
+    { "custodian": "kyle", "kind": "phone", "alreadyRecording": false, "note": "in use (call/browsing), camera not active" }
+  ],
+  "judgmentOutcomes": {
+    "$comment": "What the judgment run committed — the regression comparison targets.",
+    "perception": { "dana": "complete", "priya": "partial", "ruth": "partial-with-order-distortion", "kyle": "none-to-trace-ambient" },
+    "recording": { "cam6": "corrupted (critical seconds unrecoverable)", "cam7": "corrupted", "cam3": "usable-with-artifacts", "door": "nothing relevant" },
+    "bystanderFootage": "none (2s event; nobody drew a phone)",
+    "nullExposureNote": "the 21:12:38 register glitch on cam3 was captured and perceived by no one"
+  }
+}

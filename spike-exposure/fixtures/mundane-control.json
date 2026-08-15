@@ -1,0 +1,33 @@
+{
+  "$comment": "V3 SCORED independent fixture — the functions were NOT designed against this. Daylight parking-lot fender-bender. Must come out boring and correct.",
+  "fixture": "mundane-control",
+  "role": "V3 SCORED",
+  "seed": 41100907,
+  "event": {
+    "id": "mc-e-fenderbender",
+    "mode": "accidental",
+    "at": "2026-05-09T14:20:00",
+    "durationSeconds": 2,
+    "signature": {
+      "visibility": "fully-visible",
+      "visualMagnitude": 0.8,
+      "audibility": 0.85,
+      "emSideEffect": 0.0,
+      "physicalSideEffect": 0.6,
+      "radiusMeters": 0
+    }
+  },
+  "lighting": "daylight",
+  "observers": [
+    { "id": "b1-walker",  "distanceMeters": 20, "offAxisDegrees": 15,  "occlusion": 0.0, "attention": "ambient",  "attentionTarget": null,   "stress": 0.1, "sensory": "normal", "note": "walking toward the lot" },
+    { "id": "b2-trunk",   "distanceMeters": 8,  "offAxisDegrees": 160, "occlusion": 0.1, "attention": "attended", "attentionTarget": "own trunk", "stress": 0.1, "sensory": "normal", "note": "loading groceries, facing away" },
+    { "id": "b3-phone",   "distanceMeters": 35, "offAxisDegrees": 30,  "occlusion": 0.0, "attention": "attended", "attentionTarget": "phone", "stress": 0.1, "sensory": "normal", "note": "at cart return, absorbed in phone" }
+  ],
+  "devices": [
+    { "id": "lot-dome", "kind": "dome", "qualityTier": "dome-mid", "distanceMeters": 25, "inFieldOfView": true, "emExposed": false, "operating": true, "retentionDays": 30 }
+  ],
+  "observerCarriedDevices": [
+    { "custodian": "b1-walker", "kind": "phone", "alreadyRecording": false },
+    { "custodian": "b3-phone",  "kind": "phone", "alreadyRecording": false, "note": "phone in hand but camera not active" }
+  ]
+}

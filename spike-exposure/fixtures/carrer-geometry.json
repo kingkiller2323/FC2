@@ -1,0 +1,52 @@
+{
+  "$comment": "UNSCORED PLAUSIBILITY fixture (demoted per Amendment 1 — this evidence texture was authored backwards from a narrative requirement during the Era 3 canon pass and is NOT capture-physics ground truth). Night street, ~25s rescue-shaped event, crowd present, one security camera across the street. Reported descriptively only; divergence from canon texture is a note, possibly about canon.",
+  "fixture": "carrer-geometry",
+  "role": "PLAUSIBILITY (UNSCORED)",
+  "seed": 20130921,
+  "event": {
+    "id": "cg-e-rescue",
+    "mode": "accidental",
+    "at": "2013-09-21T21:47:00",
+    "durationSeconds": 25,
+    "signature": {
+      "visibility": "fully-visible",
+      "visualMagnitude": 0.9,
+      "audibility": 0.8,
+      "emSideEffect": 0.0,
+      "physicalSideEffect": 0.9,
+      "radiusMeters": 0
+    }
+  },
+  "lighting": "night-streetlit",
+  "observers": [
+    { "id": "w01", "distanceMeters": 4,  "offAxisDegrees": 10,  "occlusion": 0.0, "attention": "attended", "attentionTarget": "event", "stress": 0.8, "sensory": "normal" },
+    { "id": "w02", "distanceMeters": 6,  "offAxisDegrees": 20,  "occlusion": 0.0, "attention": "attended", "attentionTarget": "event", "stress": 0.8, "sensory": "normal" },
+    { "id": "w03", "distanceMeters": 8,  "offAxisDegrees": 5,   "occlusion": 0.1, "attention": "attended", "attentionTarget": "event", "stress": 0.7, "sensory": "normal" },
+    { "id": "w04", "distanceMeters": 12, "offAxisDegrees": 40,  "occlusion": 0.2, "attention": "ambient",  "attentionTarget": null,    "stress": 0.4, "sensory": "normal" },
+    { "id": "w05", "distanceMeters": 15, "offAxisDegrees": 60,  "occlusion": 0.0, "attention": "ambient",  "attentionTarget": null,    "stress": 0.3, "sensory": "normal" },
+    { "id": "w06", "distanceMeters": 18, "offAxisDegrees": 90,  "occlusion": 0.3, "attention": "attended", "attentionTarget": "companion", "stress": 0.2, "sensory": "normal" },
+    { "id": "w07", "distanceMeters": 22, "offAxisDegrees": 25,  "occlusion": 0.0, "attention": "ambient",  "attentionTarget": null,    "stress": 0.2, "sensory": "normal" },
+    { "id": "w08", "distanceMeters": 25, "offAxisDegrees": 120, "occlusion": 0.5, "attention": "attended", "attentionTarget": "phone", "stress": 0.1, "sensory": "normal" },
+    { "id": "w09", "distanceMeters": 30, "offAxisDegrees": 15,  "occlusion": 0.2, "attention": "ambient",  "attentionTarget": null,    "stress": 0.2, "sensory": "normal" },
+    { "id": "w10", "distanceMeters": 35, "offAxisDegrees": 70,  "occlusion": 0.6, "attention": "ambient",  "attentionTarget": null,    "stress": 0.1, "sensory": "normal" },
+    { "id": "w11", "distanceMeters": 40, "offAxisDegrees": 30,  "occlusion": 0.0, "attention": "ambient",  "attentionTarget": null,    "stress": 0.1, "sensory": "normal" },
+    { "id": "w12", "distanceMeters": 45, "offAxisDegrees": 100, "occlusion": 0.7, "attention": "attended", "attentionTarget": "companion", "stress": 0.1, "sensory": "normal" },
+    { "id": "w13", "distanceMeters": 50, "offAxisDegrees": 45,  "occlusion": 0.3, "attention": "ambient",  "attentionTarget": null,    "stress": 0.1, "sensory": "normal" },
+    { "id": "w14", "distanceMeters": 55, "offAxisDegrees": 20,  "occlusion": 0.4, "attention": "ambient",  "attentionTarget": null,    "stress": 0.1, "sensory": "normal" },
+    { "id": "w15", "distanceMeters": 60, "offAxisDegrees": 80,  "occlusion": 0.8, "attention": "ambient",  "attentionTarget": null,    "stress": 0.1, "sensory": "normal" }
+  ],
+  "devices": [
+    { "id": "shop-cam", "kind": "wide", "qualityTier": "wide-far", "distanceMeters": 28, "inFieldOfView": true, "emExposed": false, "operating": true, "retentionDays": 30, "note": "across-street security camera; 2013-era low frame rate" }
+  ],
+  "observerCarriedDevices": [
+    { "custodian": "w01", "kind": "phone-2013", "alreadyRecording": false },
+    { "custodian": "w02", "kind": "phone-2013", "alreadyRecording": false },
+    { "custodian": "w04", "kind": "phone-2013", "alreadyRecording": false },
+    { "custodian": "w05", "kind": "phone-2013", "alreadyRecording": false },
+    { "custodian": "w07", "kind": "phone-2013", "alreadyRecording": false },
+    { "custodian": "w09", "kind": "phone-2013", "alreadyRecording": false },
+    { "custodian": "w11", "kind": "phone-2013", "alreadyRecording": false },
+    { "custodian": "w13", "kind": "phone-2013", "alreadyRecording": false }
+  ],
+  "canonTexture": "Era 3 canon (authored, not physics): ~4 independent phone videos beginning mid-event; security camera's relevant instant falls between frames; no identifying capture of the helper."
+}
